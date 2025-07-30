@@ -1,22 +1,23 @@
 :root {
-  --main-color: #f0c6c6;
-  --second-color: #f6eadc;
+  --main-color: #e67e7e; /* تم تعديل اللون ليكون أكثر احترافية (وردي محمر) */
+  --second-color: #f8f1e9; /* لون ثانوي أكثر هدوءًا */
+  --accent-color: #5cb85c; /* لون للتأكيد (أخضر) */
+  --text-color: #333; /* لون النصوص الأساسي */
+  --light-gray: #f9f9f9; /* خلفيات فاتحة */
 }
 
-@media (min-width: 768px) {
-  .spciale {
-    font-size: 60px;
-  }
-}
-
+/* تحسينات عامة */
 * {
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  -moz-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  font-family: "work sans", sans serif;
+  font-family: "Work Sans", sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--light-gray);
 }
 
 .container {
@@ -31,22 +32,22 @@ body {
     width: 750px;
   }
 }
-
 @media (min-width: 992px) {
   .container {
     width: 970px;
   }
 }
-
 @media (min-width: 1200px) {
   .container {
     width: 1170px;
   }
 }
 
-/* Start header*/
+/* ------ Header ------ */
 .header {
   padding: 20px;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* إضافة ظل */
 }
 
 .header .container {
@@ -55,11 +56,31 @@ body {
   align-items: center;
 }
 
-.header .container .logo {
+.header .logo {
   width: 70px;
+  transition: transform 0.3s; /* تأثير حركة */
 }
 
-.header .container .icon div::before {
+.header .logo:hover {
+  transform: scale(1.05); /* تكبير بسيط عند التمرير */
+}
+
+/* تحسين الأيقونات */
+.header .icon div {
+  background-color: var(--main-color);
+  border-radius: 50%;
+  width: 25px;
+  height: 24px;
+  position: relative;
+  margin: 5px;
+  transition: all 0.3s;
+}
+
+.header .icon div:hover {
+  background-color: var(--accent-color); /* تغيير اللون عند التمرير */
+}
+
+.header .icon div::before {
   content: "";
   background-color: var(--second-color);
   width: 10px;
@@ -70,149 +91,104 @@ body {
   left: 7px;
 }
 
-.header .container .icon div {
-  height: 24px;
-  width: 25px;
-  background-color: var(--main-color);
-  border-radius: 50%;
-  position: relative;
-  margin: 5px;
-}
-
-.header .container .icon div p {
-  height: 24px;
-  width: 150px;
-  padding: 5px;
-  border-radius: 20px 20px;
-  background: var(--main-color);
-  position: absolute;
-  top: -16px;
-  left: -130px;
-  z-index: -1;
-  transition: 1s;
-  display: none;
-  text-align: center;
-  color: white;
-}
-.header .container .icon div p:hover {
-  display: block;
-}
-
-.header .container .icon div:hover p {
-  display: block;
-}
-
-/* End header */
-
-/* Start landing */
-
+/* ------ Landing Section ------ */
 .landing {
   background-image: url(../images/name.jpg);
-  height: 120vh;
+  height: 100vh;
   background-size: cover;
+  background-position: center;
   position: relative;
-}
-
-@media (max-width: 800px) {
-  .landing {
-    background-image: url(../images/name.jpg);
-  }
+  border-radius: 0 0 20px 20px; /* حواف مدورة للقسم */
 }
 
 .landing .texts {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* زيادة وضوح النص */
 }
 
 .landing .texts p {
-  font-size: larger;
+  font-size: 1.5rem;
+  margin-top: 20px;
 }
 
-/* End landing */
-
-/* Start first */
+/* ------ Products Section ------ */
 .first .container h1 {
   text-align: center;
   color: var(--main-color);
   background-color: var(--second-color);
-  font-size: 80px;
+  padding: 20px;
+  border-radius: 10px; /* حواف مدورة للعنوان */
+  margin: 30px 0;
 }
 
-.first .prodect:nth-child(even) {
+.first .prodect {
   display: flex;
-  flex-direction: row-reverse;
   align-items: center;
   justify-content: space-around;
   margin-bottom: 50px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px; /* حواف مدورة للبطاقات */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* ظل للبطاقة */
+  transition: transform 0.3s;
 }
 
-.first .prodect:nth-child(odd) {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom: 50px;
-}
-
-@media (max-width: 768px) {
-  .first .prodect:nth-child(odd) {
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 768px) {
-  .first .prodect:nth-child(even) {
-    flex-direction: column;
-  }
+.first .prodect:hover {
+  transform: translateY(-10px); /* تأثير رفع البطاقة */
 }
 
 .first .prodect img {
-  max-width: 50%;
+  max-width: 45%;
+  border-radius: 10px; /* حواف للصور */
 }
 
 .first .prodect p {
-  font-size: x-large;
+  font-size: 1.4rem;
+  padding: 0 20px;
 }
-/* End first */
 
-/* start contact */
+/* ------ Contact Section ------ */
 .contact {
-  background-color: #f6f6f6;
-}
-
-.contact .texts {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: var(--second-color);
+  padding: 50px 0;
+  border-radius: 20px 20px 0 0; /* حواف مدورة */
 }
 
 .contact h1 {
-  text-align: center;
-  color: #ddd;
-  font-size: 80px;
-  margin-top: -5px;
+  color: var(--main-color);
+  font-size: 3.5rem;
+  margin-bottom: 30px;
 }
 
 .contact .texts p {
-  font-size: 25px;
-  margin-top: -80px;
-  color: #777;
-}
-
-.contact .address {
-  text-align: center;
-}
-
-.contact .address p {
-  font-size: x-large;
-  color: cadetblue;
+  font-size: 1.3rem;
+  color: var(--text-color);
+  margin: 10px 0;
 }
 
 .contact .address i {
-  font-size: 35px;
-  color: #25d366;
-  margin-bottom: 50px;
+  color: var(--accent-color);
+  font-size: 2rem;
+  margin: 20px 0;
 }
-/* end contact */
+
+/* ------ Responsive Adjustments ------ */
+@media (max-width: 768px) {
+  .first .prodect {
+    flex-direction: column;
+  }
+
+  .first .prodect img {
+    max-width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .landing {
+    height: 80vh;
+  }
+}
